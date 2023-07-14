@@ -1,5 +1,46 @@
-*{
+* {
   margin: 0;
   padding: 0;
-  
+}
+.register-question {
+  font-size: 20px;
+  margin-left: 40px;
+  color: black;
+}
+.underline {
+  text-decoration: underline;
+  color: black;
+}
+
+.auth-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  margin: 0px;
+  width: 400px;
+}
+.registration {
+  width: 100%;
+}
+.reg-btn {
+  background-color: #fff;
+  width: 75px;
+  height: 27px;
+  font-size: 15px;
+  border-radius: 8px;
+  box-shadow: 1px 2px 4px gray;
+}
+
+.log-in-btn {
+  background-color: #fff;
+  width: 75px;
+  height: 27px;
+  font-size: 15px;
+  border-radius: 8px;
+  box-shadow: 1px 2px 4px gray;
 }

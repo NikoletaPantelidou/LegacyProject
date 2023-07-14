@@ -4,13 +4,16 @@ ul {
   justify-content: flex-start;
   align-content: flex-start;
   flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
 }
+
 li {
   padding: 10px;
   width: 250px;
   max-width: 250px;
   max-height: 400px;
-  list-style-type: none
+  list-style-type: none;
 }
 .card {
   margin: auto;
@@ -95,8 +98,12 @@ body {
   height: 100vh;
   background-color: #f2f2f2;
 }
-
-.auth-container {
+/*.book-container {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}*/
+/*.auth-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -107,7 +114,7 @@ body {
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
   margin: 20px;
   width: 400px;
-}
+} */
 
 .form-group {
   display: flex;

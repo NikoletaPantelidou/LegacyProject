@@ -1,13 +1,12 @@
 import React from "react";
 import { useState } from "react";
 import axios from "axios";
-import { useCookies } from "react-cookie";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function Auth() {
   return (
     <div className="auth">
-      <Register />
       <Login />
     </div>
   );
@@ -15,9 +14,7 @@ function Auth() {
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [_,setCookies]=useCookies(["access-token"])
-  const navigate=useNavigate()
-
+  const navigate = useNavigate();
 
   const onSubmit = async (event) => {
     event.preventDefault();
@@ -26,53 +23,35 @@ const Login = () => {
         username,
         password,
       });
-     setCookies("access-token",response.data.token)
-     window.localStorage.setItem("userID",response.data.userID)
-     navigate("/books")
-   
+
+      window.localStorage.setItem("userID", response.data.userID);
+      alert("User logged in correctly!");
+      navigate("/books");
     } catch (error) {
       console.log(error);
     }
   };
   return (
-    <Form
-      username={username}
-      setUsername={setUsername}
-      password={password}
-      setPassword={setPassword}
-      label="Login"
-      onSubmit={onSubmit}
-    />
+    <div>
+      <Form
+        username={username}
+        setUsername={setUsername}
+        password={password}
+        setPassword={setPassword}
+        label="Login"
+        onSubmit={onSubmit}
+      />
+
+      <p className="register-question">
+        Don't you have an account? Please register{" "}
+        <Link to={"/register/"}>
+          <span className="underline">here!</span>
+        </Link>
+      </p>
+    </div>
   );
 };
 
-const Register = () => {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const onSubmit = async (event) => {
-    event.preventDefault();
-    try {
-      await axios.post("http://localhost:5000/auth/register", {
-        username,
-        password,
-      });
-      alert("Registration Completed! Now login.");
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  return (
-    <Form
-      username={username}
-      setUsername={setUsername}
-      password={password}
-      setPassword={setPassword}
-      label="Register"
-      onSubmit={onSubmit}
-    />
-  );
-};
 const Form = ({
   username,
   setUsername,
@@ -105,7 +84,9 @@ const Form = ({
             onChange={(event) => setPassword(event.target.value)}
           />
         </div>
-        <button type="submit">{label}</button>
+        <button className="log-in-btn" type="submit">
+          {label}
+        </button>
       </form>
     </div>
   );
