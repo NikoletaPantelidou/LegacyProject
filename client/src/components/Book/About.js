@@ -14,7 +14,7 @@ function About() {
           By MERN STACK
         </Typography>
         <Typography variant="h4" gutterBottom sx={{fontFamily:"fantasy"}} >
-         that is created by Melpomeni and Ameneh
+         that is created by Melpomeni and Ameneh asdasdasdasdasdasdasdasdasdasd
         </Typography>
       </Box>
     </div>
