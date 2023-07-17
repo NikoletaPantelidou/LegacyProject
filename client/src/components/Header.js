@@ -2,13 +2,16 @@ import React, { useState } from "react";
 import { AppBar, Toolbar, Typography, Tabs, Tab } from "@mui/material";
 import LibraryBooksOutlinedIcon from "@mui/icons-material/LibraryBooks";
 import { NavLink } from "react-router-dom";
+import { useCookies } from "react-cookie";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@mui/material";
 function Header() {
   const [value, setValue] = useState();
+  const [cookies, setCookies] = useCookies(["access-token"]);
   const navigate = useNavigate();
 
   const logout = () => {
+    setCookies("access-token", "");
     window.localStorage.removeItem("userID");
     navigate("/auth");
   };
@@ -17,11 +20,12 @@ function Header() {
     <div>
       <AppBar sx={{ backgroundColor: "#232F3D" }} position="sticky">
         <Toolbar>
-          <NavLink to="/" style={{ color: "white" }}>
+          {/* <NavLink to="/" style={{ color: "white" }}>
             <Typography>
               <LibraryBooksOutlinedIcon />
             </Typography>
-          </NavLink>
+          </NavLink> */}
+          <Tab LinkComponent={NavLink} to="/" label="Home" />
           <Tabs
             sx={{ ml: "auto" }}
             textColor="inherit"
@@ -29,13 +33,15 @@ function Header() {
             value={value}
             onChange={(e, val) => setValue(val)}
           >
-            <Tab LinkComponent={NavLink} to="about" label="About Us" />
-
-            <Tab LinkComponent={NavLink} to="add" label="Add product" />
-            <Tab LinkComponent={NavLink} to="books" label="Library" />
-            <Button className="log-out" onClick={logout}>
-              Logout
-            </Button>
+             {!cookies["access-token"] ? (
+              <Tab LinkComponent={NavLink} to="auth" label="Login/Register" />
+            ) : (
+              <>
+                <Tab LinkComponent={NavLink} to="add" label="Add product" />
+                <Tab LinkComponent={NavLink} to="about" label="About us" />
+                <Button onClick={logout}>Logout</Button>
+              </>
+            )}
           </Tabs>
         </Toolbar>
       </AppBar>

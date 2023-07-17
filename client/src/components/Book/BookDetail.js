@@ -34,7 +34,7 @@ function BookDetail() {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    sendRequest().then(()=>history("/books"))
+    sendRequest().then(()=>history("/"))
   };
   const handleChange = (e) => {
     setInputs((prevState) => ({
@@ -107,7 +107,7 @@ function BookDetail() {
               value={inputs.image}
               onChange={handleChange}
             />
-            <FormControlLabel
+            {/* <FormControlLabel
               control={
                 <Checkbox
                   checked={checked}
@@ -115,7 +115,7 @@ function BookDetail() {
                 />
               }
               label="Available"
-            />
+            /> */}
             <Button variant="contained" type="submit">
               Update Book
             </Button>

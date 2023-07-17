@@ -39,7 +39,7 @@ const AddBook = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(inputs, checked);
-    sendRequest().then(()=>history("/books"))
+    sendRequest().then(()=>history("/"))
   };
   return (
     <form onSubmit={handleSubmit}>
@@ -103,12 +103,12 @@ const AddBook = () => {
           value={inputs.image}
           onChange={handleChange}
         />
-        <FormControlLabel
+        {/* <FormControlLabel
           control={
             <Checkbox checked={checked} onChange={() => setChecked(!checked)} />
           }
           label="Available"
-        />
+        /> */}
         <Button variant="contained" type="submit">
           Add Book
         </Button>

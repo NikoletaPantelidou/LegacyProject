@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import axios from "axios";
+import { useCookies } from "react-cookie";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 
@@ -14,6 +15,7 @@ function Auth() {
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [_,setCookies]=useCookies(["access-token"])
   const navigate = useNavigate();
 
   const onSubmit = async (event) => {
@@ -23,10 +25,10 @@ const Login = () => {
         username,
         password,
       });
-
+      setCookies("access-token",response.data.token)
       window.localStorage.setItem("userID", response.data.userID);
       alert("User logged in correctly!");
-      navigate("/books");
+      navigate("/");
     } catch (error) {
       console.log(error);
     }
