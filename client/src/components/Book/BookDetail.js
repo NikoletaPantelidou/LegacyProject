@@ -1,16 +1,14 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-
+import Header from "../Header";
 import { FormLabel, TextField, Box, Button } from "@mui/material";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import Checkbox from "@mui/material/Checkbox";
 
 function BookDetail() {
   const [inputs, setInputs] = useState();
   const id = useParams().id;
   const [checked, setChecked] = useState(false);
-  const history =useNavigate()
+  const history = useNavigate();
 
   useEffect(() => {
     const fetchHandler = async () => {
@@ -23,18 +21,20 @@ function BookDetail() {
   }, [id]);
 
   const sendRequest = async () => {
-    await axios.put(`http://localhost:5000/books/${id}`, {
-      name: String(inputs.name),
-      author: String(inputs.author),
-      description: String(inputs.description),
-      price: Number(inputs.price),
-      image: String(inputs.image),
-      available: Boolean(checked),
-    }).then(res=>res.data)
+    await axios
+      .put(`http://localhost:5000/books/${id}`, {
+        name: String(inputs.name),
+        author: String(inputs.author),
+        description: String(inputs.description),
+        price: Number(inputs.price),
+        image: String(inputs.image),
+        available: Boolean(checked),
+      })
+      .then((res) => res.data);
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    sendRequest().then(()=>history("/"))
+    sendRequest().then(() => history("/"));
   };
   const handleChange = (e) => {
     setInputs((prevState) => ({
@@ -45,6 +45,7 @@ function BookDetail() {
 
   return (
     <div>
+      <Header />
       {inputs && (
         <form onSubmit={handleSubmit}>
           <Box
@@ -107,15 +108,7 @@ function BookDetail() {
               value={inputs.image}
               onChange={handleChange}
             />
-            {/* <FormControlLabel
-              control={
-                <Checkbox
-                  checked={checked}
-                  onChange={() => setChecked(!checked)}
-                />
-              }
-              label="Available"
-            /> */}
+
             <Button variant="contained" type="submit">
               Update Book
             </Button>

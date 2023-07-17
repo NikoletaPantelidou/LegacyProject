@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import { FormLabel, TextField, Box, Button } from "@mui/material";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import Checkbox from "@mui/material/Checkbox";
+import Header from "./Header";
 import axios from "axios";
-import {useNavigate} from "react-router-dom"
+import { useNavigate } from "react-router-dom";
 const AddBook = () => {
-  const history =useNavigate()
+  const history = useNavigate();
   const [inputs, setInputs] = useState({
     name: "",
     description: "",
@@ -33,16 +32,17 @@ const AddBook = () => {
         available: Boolean(checked),
       })
       .then((res) => res.data);
-      alert("Book Created")
+    alert("Book Created");
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(inputs, checked);
-    sendRequest().then(()=>history("/"))
+    sendRequest().then(() => history("/"));
   };
   return (
     <form onSubmit={handleSubmit}>
+      <Header />
       <Box
         display={"flex"}
         flexDirection={"column"}

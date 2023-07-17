@@ -12,16 +12,11 @@ import Register from "./components/Book/Registration";
 function App() {
   return (
     <React.Fragment>
-      <header>
-        <Header />
-      </header>
       <main>
         <Routes>
           <Route path="/" element={<Books />} exact />
           <Route path="/register" element={<Register />} exact />
-
           <Route path="/add" element={<AddBook />} exact />
-          {/* <Route path="/books" element={<Books />} exact /> */}
           <Route path="/about" element={<About />} exact />
           <Route path="/books/:id" element={<BookDetail />} exact />
           <Route path="/auth" element={<Auth />} exact />

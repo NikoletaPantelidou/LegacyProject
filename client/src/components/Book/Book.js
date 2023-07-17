@@ -6,30 +6,23 @@ import axios from "axios";
 function Book(props) {
   const navigate = useNavigate();
   const { _id, name, author, description, price, image } = props.book;
-  // const deleteHandler = (id) => {
-  //   axios
-  //     .delete(`http://localhost:5000/books/${_id}`)
-  //     .then((data) => {
-  //       window.alert("Are you sure you want to delete this item?");
-  //       console.log(data);
-  //       window.location.reload();
-  //     })
-  //     .catch((err) => console.log(err));
-  // };
+
   const deleteHandler = async (req, res) => {
     console.log(_id);
     await axios
       .delete(`http://localhost:5000/books/${_id}`)
-
-      .then((res) => res.data)
+      .then((data) => {
+        window.alert("Are you sure you want to delete this item?");
+        console.log(data);
+      })
       .then(() => navigate("http://localhost:5000"))
       .then(() => navigate("/"));
-      window.location.reload()
+    window.location.reload();
   };
 
   return (
     <div className="card">
-      <img src={image} alt={name} />
+      <img className="card-images" src={image} alt={name} />
       <article>By {author}</article>
       <h3>{name}</h3>
       <p>{description}</p>
