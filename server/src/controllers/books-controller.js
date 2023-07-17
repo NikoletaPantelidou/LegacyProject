@@ -1,4 +1,5 @@
 const Book = require("../model/Book");
+const authorization = require("../routes/users");
 
 const getAllBooks = async (req, res, next) => {
   // This route will provide all of the books
@@ -28,6 +29,7 @@ const getById = async (req, res, next) => {
 };
 
 const addBook = async (req, res, next) => {
+  await authorization();
   const { name, author, description, price, available, image } = req.body;
   let book;
   try {
