@@ -10,6 +10,7 @@ app.use(express.json());
 app.use(cors());
 app.use("/books", router);
 app.use("/auth", userRouter);
+app.use(cors({ origin: true, credentials: true }));
 
 mongoose
   .connect(

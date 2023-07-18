@@ -3,6 +3,7 @@ import axios from "axios";
 import Book from "./Book";
 import "./Book.css";
 import Header from "../Header";
+import ControlledCarousel from "../Book/ControlledCarousel";
 
 const URL = "http://localhost:5000/books";
 const fetchHandler = async () => {
@@ -18,13 +19,13 @@ const Books = () => {
 
   useEffect(() => {
     fetchHandler().then((data) => setBooks(data.books));
-    // console.log(data.books);
   }, []);
 
   console.log(books);
   return (
     <div className="book-container">
       <Header />
+
       <ul>
         {books &&
           books.map((book, i) => (
@@ -33,6 +34,8 @@ const Books = () => {
             </li>
           ))}
       </ul>
+      <h1 className="carousel-header">Most popular choices </h1>
+      <ControlledCarousel />
     </div>
   );
 };
