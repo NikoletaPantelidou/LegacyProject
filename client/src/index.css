@@ -2,6 +2,14 @@
   margin: 0;
   padding: 0;
 }
+
+/*main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f2f2f2;
+}*/
 .register-question {
   font-size: 20px;
   margin-left: 40px;
@@ -22,10 +30,14 @@
   border-radius: 5px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
   margin: 0px;
-  width: 400px;
 }
-.registration {
+.registration > .auth-container {
+  /* width: 800px;
+  left: 500px;
+  margin-top: 193px;
+  margin: 214px;*/
   width: 100%;
+  margin-top: 193px;
 }
 .reg-btn {
   background-color: #fff;

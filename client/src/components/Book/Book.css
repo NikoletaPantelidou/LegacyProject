@@ -8,6 +8,10 @@ ul {
   justify-content: center;
 }
 
+/*body {
+  background-image: url("https://media.istockphoto.com/id/1302676874/photo/open-book-close-up-at-the-library.jpg?s=170667a&w=0&k=20&c=y9kyGbQVV00pXvAZ0f4dP9_htUg2uip0V37afXLuDpo=");
+  background-size: auto;
+}*/
 li {
   padding: 10px;
   width: 250px;
@@ -169,12 +173,49 @@ h2 {
 }
 
 .card-images {
-  width: 200px !important;
-  height: auto;
+  width: 170px !important;
+  height: 100%;
   margin-bottom: 10px;
 }
 
 p {
   max-width: 400px;
   font-size: 12px;
+}
+.carousel-inner > .carousel-item > img {
+  width: 640px !important;
+  height: 360px !important;
+  object-fit: contain;
+}
+
+.carousel-inner > .carousel-item {
+  position: sticky;
+  display: none;
+  float: left;
+  margin-right: -100%;
+  backface-visibility: hidden;
+  transition: transform 0.6s ease-in-out;
+}
+.carousel-inner > .active {
+  position: sticky;
+  display: none;
+  float: left;
+  margin-right: -100%;
+  backface-visibility: hidden;
+  transition: transform 0.6s ease-in-out;
+}
+
+.slide {
+  /* width: 66% !important;
+  margin-top: 171px;
+  margin-left: 400px;*/
+  bottom: -215px;
+  left: 500px;
+}
+
+.carousel-header {
+  position: absolute;
+  top: 641px;
+  left: 600px;
+  color: #282c34;
 }

@@ -29,7 +29,6 @@ const getById = async (req, res, next) => {
 };
 
 const addBook = async (req, res, next) => {
-  await authorization();
   const { name, author, description, price, available, image } = req.body;
   let book;
   try {
