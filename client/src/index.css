@@ -3,13 +3,13 @@
   padding: 0;
 }
 
-main {
+/*main {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
   background-color: #f2f2f2;
-}
+}*/
 .register-question {
   font-size: 20px;
   margin-left: 40px;
@@ -32,7 +32,12 @@ main {
   margin: 0px;
 }
 .registration > .auth-container {
-  width: 400px;
+  /* width: 800px;
+  left: 500px;
+  margin-top: 193px;
+  margin: 214px;*/
+  width: 100%;
+  margin-top: 193px;
 }
 .reg-btn {
   background-color: #fff;
